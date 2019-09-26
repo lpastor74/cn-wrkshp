@@ -1,0 +1,56 @@
+version: "2.3"
+services:
+  mysql:
+    restart: always
+    image: mysql:5.7.19
+    ports:
+      - "33062:3306"
+    environment:
+      MYSQL_ROOT_PASSWORD: root
+    volumes:
+      - ./mysql/scripts:/docker-entrypoint-initdb.d
+    command: [--ssl=0]
+    healthcheck:
+      test: ["CMD", "mysqladmin", "ping", "-uroot", "-proot"]
+      interval: 30s
+      timeout: 60s
+      retries: 5
+      start_period: 80s
+  py-api:
+    image: lpastor/cnapi:latest
+    ports:
+      - "5000:5000"
+    environment:
+      HOSTNAME: py.com
+    links:
+      - mysql
+    healthcheck:
+      test: ["CMD", "nc", "-z", "localhost", "5000"]
+      interval: 10s
+      timeout: 120s
+      start_period: 80s
+      retries: 10
+    depends_on:
+      mysql:
+        condition: service_healthy
+    volumes:
+      - ./api:/app/
+  py-app:
+    image: p3:0.0.2
+    ports:
+      - "5005:5055"
+    environment:
+      HOSTNAME: py.com
+    links:
+      - py-api
+    healthcheck:
+      test: ["CMD", "nc", "-z", "localhost", "5001"]
+      interval: 10s
+      timeout: 120s
+      start_period: 80s
+      retries: 10
+    depends_on:
+      py-api:
+        condition: service_healthy
+    volumes:
+      - ./app:/app/
