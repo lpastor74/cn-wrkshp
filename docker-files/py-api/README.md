@@ -18,7 +18,7 @@ Retruns all users with related data
 #Requerments
 Need access to DataBase 
 
-#License
+# License
 py-app code is distributed under Apache license 2.0.
 
 
