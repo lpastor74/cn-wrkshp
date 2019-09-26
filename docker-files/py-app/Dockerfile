@@ -1,9 +1,9 @@
-FROM ubuntu:latest
+FROM python:3.7-alpine
+
 WORKDIR /app
 ADD . .
-RUN apt-get update -y
-RUN apt-get install -y python-pip python-dev build-essential
+RUN apk add --no-cache gcc musl-dev linux-headers
+RUN pip install  -r requirements.txt
 
-RUN pip install -r requirements.txt
-ENTRYPOINT ["python"]
-CMD ["py-app.py"]
+ENTRYPOINT [ "python" ]
+CMD [ "py-app.py" ]

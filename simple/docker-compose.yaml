@@ -28,7 +28,7 @@ services:
       test: ["CMD", "nc", "-z", "localhost", "5000"]
       interval: 10s
       timeout: 120s
-      start_period: 80s
+      start_period: 40s
       retries: 10
     depends_on:
       mysql:
@@ -44,10 +44,10 @@ services:
     links:
       - py-api
     healthcheck:
-      test: ["CMD", "nc", "-z", "localhost", "5001"]
+      test: ["CMD", "nc", "-z", "localhost", "5005"]
       interval: 10s
       timeout: 120s
-      start_period: 80s
+      start_period: 40s
       retries: 10
     depends_on:
       py-api:
