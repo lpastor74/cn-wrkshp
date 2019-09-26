@@ -18,7 +18,7 @@ app.config["DEBUG"] = True
 
 @app.route('/', methods=['GET'])
 def home():
-    return render_template('index.html')
+    return 'hello'
 
 
 # A route to return all of the available entries in our catalog.
