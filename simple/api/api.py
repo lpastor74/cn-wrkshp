@@ -18,7 +18,9 @@ app.config["DEBUG"] = True
 
 @app.route('/', methods=['GET'])
 def home():
-    return "<h1>Simple API</h1><p>available methods <ul><li><a href='/api/v1/resources/all'> All</a</li><li><a href='/api/v1/resources/user/1'> User1  </a></li></ul></p>"
+    return render_template('index.html')
+
+    #"<h1>cool API</h1><p>available methods <ul><li><a href='/api/v1/resources/all'> All</a</li><li><a href='/api/v1/resources/user/1'> User1  </a></li></ul></p>"
 
 
 # A route to return all of the available entries in our catalog.
