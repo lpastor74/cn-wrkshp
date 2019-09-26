@@ -7,7 +7,6 @@ app = Flask(__name__)
 
 @app.route('/')
 def hello_whale():
-
     res = requests.get('https://favqs.com/api/qotd')
     y = json.loads(res.text)
     author = y['quote']['author']
@@ -27,4 +26,4 @@ def api_call(id):
 
 
 if __name__ == '__main__':
-    app.run(debug=True, port=int("5055"), host='localhost')
+    app.run(debug=True, port=int("5055"), host='0.0.0.0')

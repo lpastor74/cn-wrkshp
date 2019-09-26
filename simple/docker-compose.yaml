@@ -38,7 +38,9 @@ services:
   py-app:
     image: lpastor/cn2app:latest
     ports:
-      - "5005:5055"
+      - "5055:5055"
+      - "8280:8280"
+      - "8243:8243"
     environment:
       HOSTNAME: py.com
     links:
