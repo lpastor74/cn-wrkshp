@@ -46,7 +46,7 @@ services:
     links:
       - py-api
     healthcheck:
-      test: ["CMD", "nc", "-z", "localhost", "5005"]
+      test: ["CMD", "nc", "-z", "localhost", "5055"]
       interval: 10s
       timeout: 120s
       start_period: 40s
