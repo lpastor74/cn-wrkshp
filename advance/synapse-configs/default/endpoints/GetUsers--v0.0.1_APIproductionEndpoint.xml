@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<endpoint xmlns="http://ws.apache.org/ns/synapse"
+          name="GetUsers--v0.0.1_APIproductionEndpoint">
+   <http uri-template="http://py-api:5000/api/v1/resources/user/{uri.var.userid}">
+      <timeout>
+         <responseAction>fault</responseAction>
+      </timeout>
+   </http>
+   <property name="ENDPOINT_ADDRESS"
+             value="http://py-api:5000/api/v1/resources/user/{uri.var.userid}"/>
+</endpoint>

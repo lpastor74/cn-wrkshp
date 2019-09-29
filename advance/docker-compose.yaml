@@ -107,6 +107,7 @@ services:
         condition: service_healthy
     volumes:
       - ./apim:/home/wso2carbon/wso2-config-volume
+      - ./synapse-configs/default:/home/wso2carbon/wso2am-2.6.0/repository/deployment/server/synapse-configs/default/
     ports:
       - "9763:9763"
       - "9443:9443"
