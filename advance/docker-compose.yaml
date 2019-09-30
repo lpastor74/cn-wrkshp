@@ -75,7 +75,7 @@ services:
   is-as-km:
     image: wso2/wso2is-km:5.7.0
     healthcheck:
-      test: ["CMD", "nc", "-z", "localhost", "9443"]
+      test: ["CMD", "nc", "-z", "localhost", "9445"]
       interval: 10s
       timeout: 120s
       start_period: 100s
@@ -88,8 +88,8 @@ services:
     volumes:
       - ./is-as-km:/home/wso2carbon/wso2-config-volume
     ports:
-      - "9765:9763"
-      - "9445:9443"
+      - "9765:9765"
+      - "9445:9445"
   api-manager:
     image: wso2/wso2am:2.6.0
     healthcheck:
