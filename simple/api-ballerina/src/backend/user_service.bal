@@ -5,46 +5,45 @@ import ballerina/jsonutils;
 import ballerinax/java.jdbc;
 // import ballerina/docker;
 
-jdbc:Client ordersDb = new({
-    url: "jdbc:mysql://localhost:3306/orders?serverTimezone=UTC",
+jdbc:Client usersDb = new({
+    url: "jdbc:mysql://localhost:3306/api_svc?serverTimezone=UTC",
     username: "root",
     password: "root",
     poolOptions: { maximumPoolSize: 5 },
     dbOptions: { useSSL: false }
 });
 
-type Order record {
-    int order_id;
-    string customer_id;
-    string item_code;
-    string timestamp;
-    float amount;
+// @docker:Expose {}
+listener http:Listener usersEP = new(9090);
+
+type User record {
+    int idUsers;
+    string FirstName;
+    string LastName;
+    string City;
+    string ZIP;
+    int ExtID;
 };
 
-// @docker:Expose {}
-listener http:Listener ordersEP = new(9090);
-
 // @docker:Config {
-//     name: "order_service",
+//     name: "ballerina-api",
 //     tag: "v1"
 // }
-
-service orders on ordersEP {
+service users on usersEP {
 
     @http:ResourceConfig {
         methods: ["GET"],
         path: "/"
     }
-    resource function get_all_orders(http:Caller caller, http:Request request) {
-        var selectRet = ordersDb->select("SELECT * FROM orders", Order);
-        string result = "No items found.";
-        if (selectRet is table<Order>) {
+    resource function get_all(http:Caller caller, http:Request request) {
+        var selectRet = usersDb->select("SELECT * FROM users", User);
+        string result = "No users found.";
+        if (selectRet is table<User>) {
             json jsonConversionRet = jsonutils:fromTable(selectRet);
             result = jsonConversionRet.toJsonString();
-            // io:println(result);
         } else {
             error err = selectRet;
-            io:println("Select data from student table failed: ",
+            io:println("Select data from users table failed: ",
                     <string> err.detail()["message"]);
         }
         var res = caller->respond(result);
@@ -58,15 +57,14 @@ service orders on ordersEP {
         path: "/{id}"
     }
     resource function get_by_id(http:Caller caller, http:Request request,int id) {
-        var orderQueryResult = ordersDb->select("SELECT * FROM orders WHERE order_id=?", Order,id);
+        var userQueryResult = usersDb->select("SELECT * FROM users WHERE idUsers=?", User,id);
         string result = "No items found.";
-        if (orderQueryResult is table<Order>) {
-            json jsonConversionRet = jsonutils:fromTable(orderQueryResult);
+        if (userQueryResult is table<User>) {
+            json jsonConversionRet = jsonutils:fromTable(userQueryResult);
             result = jsonConversionRet.toJsonString();
-            io:println(result);
         } else {
-            error err = orderQueryResult;
-            io:println("Select data from student table failed: ",
+            error err = userQueryResult;
+            io:println("Select data from users table failed: ",
                     <string> err.detail()["message"]);
         }
         var res = caller->respond(result);
