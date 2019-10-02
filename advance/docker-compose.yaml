@@ -36,9 +36,9 @@ services:
     volumes:
       - ./api:/app/
   py-app:
-    image: lpastor/cn2app-adv:latest
+    image: flask:latest
     ports:
-      - "5055:5055"
+      - "5055:5115"
       - "8281:8280"
       - "8244:8243"
     environment:
@@ -87,6 +87,9 @@ services:
         condition: service_healthy
     volumes:
       - ./is-as-km:/home/wso2carbon/wso2-config-volume
+    links:
+      - py-api
+      - py-app
     ports:
       - "9765:9765"
       - "9445:9445"
@@ -107,7 +110,6 @@ services:
         condition: service_healthy
     volumes:
       - ./apim:/home/wso2carbon/wso2-config-volume
-      - ./synapse-configs/default:/home/wso2carbon/wso2am-2.6.0/repository/deployment/server/synapse-configs/default/
     ports:
       - "9763:9763"
       - "9443:9443"
