@@ -1,20 +1,20 @@
+import ballerina/docker;
 import ballerina/http;
-import ballerina/log;
 import ballerina/io;
 import ballerina/jsonutils;
+import ballerina/log;
 import ballerinax/java.jdbc;
-// import ballerina/docker;
 
-jdbc:Client usersDb = new({
-    url: "jdbc:mysql://localhost:3306/api_svc?serverTimezone=UTC",
-    username: "root",
-    password: "root",
-    poolOptions: { maximumPoolSize: 5 },
-    dbOptions: { useSSL: false }
+jdbc:Client usersDb = new ({
+    url: "jdbc:localhost://mysql:33062/api_svc?serverTimezone=UTC",
+    username: "api753",
+    password: "api753_secret",
+    poolOptions: {maximumPoolSize: 5},
+    dbOptions: {useSSL: false}
 });
 
-// @docker:Expose {}
-listener http:Listener usersEP = new(9090);
+@docker:Expose {}
+listener http:Listener usersEP = new (9090);
 
 type User record {
     int idUsers;
@@ -25,10 +25,10 @@ type User record {
     int ExtID;
 };
 
-// @docker:Config {
-//     name: "ballerina-api",
-//     tag: "v1"
-// }
+@docker:Config {
+    name: "ball",
+    tag: "v2"
+}
 service users on usersEP {
 
     @http:ResourceConfig {
@@ -44,7 +44,7 @@ service users on usersEP {
         } else {
             error err = selectRet;
             io:println("Select data from users table failed: ",
-                    <string> err.detail()["message"]);
+            <string>err.detail()["message"]);
         }
         var res = caller->respond(result);
         if (res is error) {
@@ -56,8 +56,8 @@ service users on usersEP {
         methods: ["GET"],
         path: "/{id}"
     }
-    resource function get_by_id(http:Caller caller, http:Request request,int id) {
-        var userQueryResult = usersDb->select("SELECT * FROM users WHERE idUsers=?", User,id);
+    resource function get_by_id(http:Caller caller, http:Request request, int id) {
+        var userQueryResult = usersDb->select("SELECT * FROM users WHERE idUsers=?", User, id);
         string result = "No items found.";
         if (userQueryResult is table<User>) {
             json jsonConversionRet = jsonutils:fromTable(userQueryResult);
@@ -65,7 +65,7 @@ service users on usersEP {
         } else {
             error err = userQueryResult;
             io:println("Select data from users table failed: ",
-                    <string> err.detail()["message"]);
+            <string>err.detail()["message"]);
         }
         var res = caller->respond(result);
         if (res is error) {
