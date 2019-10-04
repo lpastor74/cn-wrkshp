@@ -8,7 +8,9 @@ https://favqs.com/api/qotd
 and get random  daily quotes
 
 /apicall
-will call web service defined 
+will call web service defined on port 5000
+
+
 
 
 

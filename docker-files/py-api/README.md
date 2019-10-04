@@ -17,6 +17,18 @@ Retruns all users with related data
 
 #Requerments
 Need access to DataBase 
+(in code connection is established with MySQL DB on default port 3306)
+    host="mysql",
+    user="api753",
+    passwd="api753_secret",
+    database="api_svc",
+
+to build a docker image run the following command 
+docker build --tag [name:version] .
+example 
+docker build --tag py-api:0.1 .
+
+this image will hold pyhton web api that is exposed on port 5000
 
 # License
 py-app code is distributed under Apache license 2.0.
