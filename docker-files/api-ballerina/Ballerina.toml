@@ -3,3 +3,10 @@ org-name= "dunith"
 version= "0.1.0"
 
 [dependencies]
+
+[platform]
+target = "java8"
+
+    [[platform.libraries]]
+    path = "mysql-connector-java-8.0.12.jar"
+    modules = ["backend"]

@@ -29,6 +29,7 @@ type User record {
     name: "ballerina-cn",
     tag: "v3"
 }
+
 service users on usersEP {
 
     @http:ResourceConfig {
