@@ -204,3 +204,123 @@ java.lang.NullPointerException
 	at dunith.backend.___init.$moduleStop(backend)
 	at dunith.backend.___init$SignalListener.run(Unknown Source)
  
+[2019-10-03 18:38:44,290] SEVERE {b7a.log.crash} - null 
+java.lang.NullPointerException
+	at dunith.backend.___init.dunith_backend_0_1_0__stop_(backend:17)
+	at dunith.backend.___init.$lambda$dunith_backend_0_1_0__stop_(backend)
+	at org.ballerinalang.jvm.scheduling.SchedulerItem.execute(Scheduler.java:493)
+	at org.ballerinalang.jvm.scheduling.Scheduler.run(Scheduler.java:238)
+	at org.ballerinalang.jvm.scheduling.Scheduler.runSafely(Scheduler.java:208)
+	at org.ballerinalang.jvm.scheduling.Scheduler.start(Scheduler.java:195)
+	at dunith.backend.___init.$moduleStop(backend)
+	at dunith.backend.___init$SignalListener.run(Unknown Source)
+ 
+[2019-10-03 18:38:44,294] SEVERE {b7a.log.crash} - null 
+java.lang.NullPointerException
+	at dunith.backend.___init.dunith_backend_0_1_0__stop_(backend:17)
+	at dunith.backend.___init.$lambda$dunith_backend_0_1_0__stop_(backend)
+	at org.ballerinalang.jvm.scheduling.SchedulerItem.execute(Scheduler.java:493)
+	at org.ballerinalang.jvm.scheduling.Scheduler.run(Scheduler.java:238)
+	at org.ballerinalang.jvm.scheduling.Scheduler.runSafely(Scheduler.java:208)
+	at org.ballerinalang.jvm.scheduling.Scheduler.start(Scheduler.java:195)
+	at dunith.backend.___init.$moduleStop(backend)
+	at dunith.backend.___init$SignalListener.run(Unknown Source)
+ 
+[2019-10-03 18:40:21,831] SEVERE {b7a.log.crash} - null 
+java.lang.NullPointerException
+	at dunith.backend.___init.dunith_backend_0_1_0__stop_(backend:17)
+	at dunith.backend.___init.$lambda$dunith_backend_0_1_0__stop_(backend)
+	at org.ballerinalang.jvm.scheduling.SchedulerItem.execute(Scheduler.java:493)
+	at org.ballerinalang.jvm.scheduling.Scheduler.run(Scheduler.java:238)
+	at org.ballerinalang.jvm.scheduling.Scheduler.runSafely(Scheduler.java:208)
+	at org.ballerinalang.jvm.scheduling.Scheduler.start(Scheduler.java:195)
+	at dunith.backend.___init.$moduleStop(backend)
+	at dunith.backend.___init$SignalListener.run(Unknown Source)
+ 
+[2019-10-03 18:40:21,836] SEVERE {b7a.log.crash} - null 
+java.lang.NullPointerException
+	at dunith.backend.___init.dunith_backend_0_1_0__stop_(backend:17)
+	at dunith.backend.___init.$lambda$dunith_backend_0_1_0__stop_(backend)
+	at org.ballerinalang.jvm.scheduling.SchedulerItem.execute(Scheduler.java:493)
+	at org.ballerinalang.jvm.scheduling.Scheduler.run(Scheduler.java:238)
+	at org.ballerinalang.jvm.scheduling.Scheduler.runSafely(Scheduler.java:208)
+	at org.ballerinalang.jvm.scheduling.Scheduler.start(Scheduler.java:195)
+	at dunith.backend.___init.$moduleStop(backend)
+	at dunith.backend.___init$SignalListener.run(Unknown Source)
+ 
+[2019-10-03 18:44:08,387] SEVERE {b7a.log.crash} - null 
+java.lang.NullPointerException
+	at dunith.backend.___init.dunith_backend_0_1_0__stop_(backend:17)
+	at dunith.backend.___init.$lambda$dunith_backend_0_1_0__stop_(backend)
+	at org.ballerinalang.jvm.scheduling.SchedulerItem.execute(Scheduler.java:493)
+	at org.ballerinalang.jvm.scheduling.Scheduler.run(Scheduler.java:238)
+	at org.ballerinalang.jvm.scheduling.Scheduler.runSafely(Scheduler.java:208)
+	at org.ballerinalang.jvm.scheduling.Scheduler.start(Scheduler.java:195)
+	at dunith.backend.___init.$moduleStop(backend)
+	at dunith.backend.___init$SignalListener.run(Unknown Source)
+ 
+[2019-10-03 18:44:08,391] SEVERE {b7a.log.crash} - null 
+java.lang.NullPointerException
+	at dunith.backend.___init.dunith_backend_0_1_0__stop_(backend:17)
+	at dunith.backend.___init.$lambda$dunith_backend_0_1_0__stop_(backend)
+	at org.ballerinalang.jvm.scheduling.SchedulerItem.execute(Scheduler.java:493)
+	at org.ballerinalang.jvm.scheduling.Scheduler.run(Scheduler.java:238)
+	at org.ballerinalang.jvm.scheduling.Scheduler.runSafely(Scheduler.java:208)
+	at org.ballerinalang.jvm.scheduling.Scheduler.start(Scheduler.java:195)
+	at dunith.backend.___init.$moduleStop(backend)
+	at dunith.backend.___init$SignalListener.run(Unknown Source)
+ 
+[2019-10-03 19:01:53,562] SEVERE {b7a.log.crash} - null 
+java.lang.NullPointerException
+	at dunith.backend.___init.dunith_backend_0_1_0__stop_(backend:17)
+	at dunith.backend.___init.$lambda$dunith_backend_0_1_0__stop_(backend)
+	at org.ballerinalang.jvm.scheduling.SchedulerItem.execute(Scheduler.java:493)
+	at org.ballerinalang.jvm.scheduling.Scheduler.run(Scheduler.java:238)
+	at org.ballerinalang.jvm.scheduling.Scheduler.runSafely(Scheduler.java:208)
+	at org.ballerinalang.jvm.scheduling.Scheduler.start(Scheduler.java:195)
+	at dunith.backend.___init.$moduleStop(backend)
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.lang.reflect.Method.invoke(Method.java:498)
+	at org.ballerinalang.testerina.core.entity.TesterinaFunction.run(TesterinaFunction.java:116)
+	at org.ballerinalang.testerina.core.entity.TesterinaFunction.directInvoke(TesterinaFunction.java:83)
+	at org.ballerinalang.testerina.core.entity.TestSuite.stop(TestSuite.java:341)
+	at org.ballerinalang.testerina.core.BTestRunner.lambda$execute$34(BTestRunner.java:802)
+	at java.lang.Iterable.forEach(Iterable.java:75)
+	at org.ballerinalang.testerina.core.BTestRunner.execute(BTestRunner.java:638)
+	at org.ballerinalang.testerina.core.BTestRunner.runTest(BTestRunner.java:160)
+	at org.ballerinalang.testerina.util.TesterinaUtils.executeTests(TesterinaUtils.java:132)
+	at org.ballerinalang.packerina.task.RunTestsTask.execute(RunTestsTask.java:81)
+	at org.ballerinalang.packerina.TaskExecutor.executeTasks(TaskExecutor.java:38)
+	at org.ballerinalang.packerina.cmd.BuildCommand.execute(BuildCommand.java:395)
+	at java.util.Optional.ifPresent(Optional.java:159)
+	at org.ballerinalang.tool.Main.main(Main.java:59)
+ 
+[2019-10-03 19:01:53,565] SEVERE {b7a.log.crash} - null 
+java.lang.NullPointerException
+	at dunith.backend.___init.dunith_backend_0_1_0__stop_(backend:17)
+	at dunith.backend.___init.$lambda$dunith_backend_0_1_0__stop_(backend)
+	at org.ballerinalang.jvm.scheduling.SchedulerItem.execute(Scheduler.java:493)
+	at org.ballerinalang.jvm.scheduling.Scheduler.run(Scheduler.java:238)
+	at org.ballerinalang.jvm.scheduling.Scheduler.runSafely(Scheduler.java:208)
+	at org.ballerinalang.jvm.scheduling.Scheduler.start(Scheduler.java:195)
+	at dunith.backend.___init.$moduleStop(backend)
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.lang.reflect.Method.invoke(Method.java:498)
+	at org.ballerinalang.testerina.core.entity.TesterinaFunction.run(TesterinaFunction.java:116)
+	at org.ballerinalang.testerina.core.entity.TesterinaFunction.directInvoke(TesterinaFunction.java:83)
+	at org.ballerinalang.testerina.core.entity.TestSuite.stop(TestSuite.java:341)
+	at org.ballerinalang.testerina.core.BTestRunner.lambda$execute$34(BTestRunner.java:802)
+	at java.lang.Iterable.forEach(Iterable.java:75)
+	at org.ballerinalang.testerina.core.BTestRunner.execute(BTestRunner.java:638)
+	at org.ballerinalang.testerina.core.BTestRunner.runTest(BTestRunner.java:160)
+	at org.ballerinalang.testerina.util.TesterinaUtils.executeTests(TesterinaUtils.java:132)
+	at org.ballerinalang.packerina.task.RunTestsTask.execute(RunTestsTask.java:81)
+	at org.ballerinalang.packerina.TaskExecutor.executeTasks(TaskExecutor.java:38)
+	at org.ballerinalang.packerina.cmd.BuildCommand.execute(BuildCommand.java:395)
+	at java.util.Optional.ifPresent(Optional.java:159)
+	at org.ballerinalang.tool.Main.main(Main.java:59)
+ 

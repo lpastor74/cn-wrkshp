@@ -6,7 +6,7 @@ import ballerina/log;
 import ballerinax/java.jdbc;
 
 jdbc:Client usersDb = new ({
-    url: "jdbc:localhost://mysql:33062/api_svc?serverTimezone=UTC",
+    url: "jdbc:mysql://mysql:3306/api_svc?serverTimezone=UTC",
     username: "api753",
     password: "api753_secret",
     poolOptions: {maximumPoolSize: 5},
@@ -26,8 +26,8 @@ type User record {
 };
 
 @docker:Config {
-    name: "ball",
-    tag: "v2"
+    name: "ballerina-cn",
+    tag: "v3"
 }
 service users on usersEP {
 

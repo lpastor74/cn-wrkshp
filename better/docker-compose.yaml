@@ -32,16 +32,18 @@ services:
     volumes:
       - ./gw/balx:/home/exec/
       - ./gw/conf:/home/ballerina/conf/
-  ball:
-    image: ballerina-api:v1
+  ballerina:
+    image: ballerina-cn:v3
     ports:
-      - "9990:9990"
+      - "9990:9090"
     healthcheck:
       test: ["CMD", "nc", "-z", "localhost", "9990"]
       interval: 10s
       timeout: 120s
       start_period: 40s
       retries: 10
+    links:
+      - mysql
   py-api:
     image: lpastor/cn2api:latest
     ports:
