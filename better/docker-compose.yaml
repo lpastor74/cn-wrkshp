@@ -33,7 +33,7 @@ services:
       - ./gw/balx:/home/exec/
       - ./gw/conf:/home/ballerina/conf/
   ballerina:
-    image: ballerina-cn:v3
+    image: lpastor/ballerina-cn:v3
     ports:
       - "9990:9090"
     healthcheck:

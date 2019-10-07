@@ -26,15 +26,18 @@ type User record {
 };
 
 @docker:Config {
-    name: "ballerina-cn",
+    name: "lpastor/ballerina-cn",
     tag: "v3"
 }
 
+@http:ServiceConfig {
+    basePath: "/api/v1"
+}
 service users on usersEP {
 
     @http:ResourceConfig {
         methods: ["GET"],
-        path: "/"
+        path: "/resources/user/"
     }
     resource function get_all(http:Caller caller, http:Request request) {
         var selectRet = usersDb->select("SELECT * FROM users", User);
@@ -55,7 +58,7 @@ service users on usersEP {
 
     @http:ResourceConfig {
         methods: ["GET"],
-        path: "/{id}"
+        path: "/resources/user/{id}"
     }
     resource function get_by_id(http:Caller caller, http:Request request, int id) {
         var userQueryResult = usersDb->select("SELECT * FROM users WHERE idUsers=?", User, id);
