@@ -16,22 +16,6 @@ services:
       timeout: 60s
       retries: 5
       start_period: 80s
-  gw:
-    image: wso2/wso2micro-gw:3.0.1
-    ports:
-      - "9095:9095"
-      - "9090:9090"
-    environment:
-      project: get_user_mgw
-    healthcheck:
-      test: ["CMD", "nc", "-z", "localhost", "9095"]
-      interval: 10s
-      timeout: 120s
-      start_period: 40s
-      retries: 10
-    volumes:
-      - ./gw/balx:/home/exec/
-      - ./gw/conf:/home/ballerina/conf/
   ballerina:
     image: lpastor/ballerina-cn:v3
     ports:
@@ -44,43 +28,3 @@ services:
       retries: 10
     links:
       - mysql
-  py-api:
-    image: lpastor/cn2api:latest
-    ports:
-      - "5000:5000"
-    environment:
-      HOSTNAME: py.com
-    links:
-      - mysql
-    healthcheck:
-      test: ["CMD", "nc", "-z", "localhost", "5000"]
-      interval: 10s
-      timeout: 120s
-      start_period: 40s
-      retries: 10
-    depends_on:
-      mysql:
-        condition: service_healthy
-    volumes:
-      - ./api:/app/
-  py-app:
-    image: lpastor/cn2app:latest
-    ports:
-      - "5055:5055"
-      - "8280:8280"
-      - "8243:8243"
-    environment:
-      HOSTNAME: py.com
-    links:
-      - py-api
-    healthcheck:
-      test: ["CMD", "nc", "-z", "localhost", "5055"]
-      interval: 10s
-      timeout: 120s
-      start_period: 40s
-      retries: 10
-    depends_on:
-      py-api:
-        condition: service_healthy
-    volumes:
-      - ./app:/app/

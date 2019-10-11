@@ -93,13 +93,13 @@ services:
     ports:
       - "9765:9765"
       - "9445:9445"
-  gw:
+  gw-user:
     image: wso2/wso2micro-gw:3.0.1
     ports:
       - "9095:9095"
       - "9090:9090"
     environment:
-      project: get_user_proj
+      project: get-user
     healthcheck:
       test: ["CMD", "nc", "-z", "localhost", "9095"]
       interval: 10s
@@ -107,8 +107,8 @@ services:
       start_period: 40s
       retries: 10
     volumes:
-      - ./gw/balx:/home/exec/
-      - ./gw/conf:/home/ballerina/conf/
+      - ./gw-user/balx:/home/exec/
+      - ./gw-user/conf:/home/ballerina/conf/
   api-manager:
     image: wso2/wso2am:2.6.0
     healthcheck:
