@@ -5,10 +5,10 @@ import os
 from urllib.parse import urlencode
 
 import requests
-from oauthlib.oauth2 import BackendApplicationClient
+'''from oauthlib.oauth2 import BackendApplicationClient
 from oauthlib.oauth2.rfc6749.errors import (AccessDeniedError,
                                             InvalidClientError,
-                                            MissingTokenError)
+                                            MissingTokenError)'''
 from requests_oauthlib import OAuth2Session
 
 app = Flask(__name__)

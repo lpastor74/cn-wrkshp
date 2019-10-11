@@ -36,7 +36,7 @@ services:
     volumes:
       - ./api:/app/
   py-app:
-    image: flask:latest
+    image: lpastor/cn2app-adv:latest
     ports:
       - "5055:5115"
       - "8281:8280"
