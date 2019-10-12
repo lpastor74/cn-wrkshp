@@ -1,25 +1,35 @@
+import os
+
+import flask
 from flask import Flask, render_template, request, redirect, url_for, flash, make_response, session, g
 import requests
 import json
-
 from urllib.parse import urlencode
 
 import requests
+'''
 from oauthlib.oauth2 import BackendApplicationClient
 from oauthlib.oauth2.rfc6749.errors import (AccessDeniedError,
                                             InvalidClientError,
                                             MissingTokenError)
+                                            '''
 from requests_oauthlib import OAuth2Session
 
-app = Flask(__name__)
 
-app.config['WSO2_ID'] = "3mFfNIiAbVpIiUOpVY9V9bHEZhIa"
-app.config['WSO2_SECRET'] = "whlwDc74o8GwPNMfwufkvl4UWaEa"
+import requests
+# from bottle import route, redirect, request, response, template, run
+
+
+app = flask.Flask(__name__)
+
+
+app.config['WSO2_ID'] = "bclDqHvn_8og8sRqdMdX2YxWNDAa"
+app.config['WSO2_SECRET'] = "p6nPZKXqEVOhR_NP_EALEwKxPZEa"
 app.debug = True
 app.secret_key = 'development'
 authorization_base_url = 'https://localhost:9445/oauth2/authorize'
 token_url = 'http://localhost:9765/oauth2/token'
-redirect_uri = 'http://py.com:5055/apicall/callback'
+redirect_uri = 'http://py.com:5055/callback'
 scope = ['openid']
 
 
@@ -37,6 +47,15 @@ def login():
     return redirect(authorization_url)
 
 
+def authFailure():
+    """ Authentication failure --> 401 """
+    # response = make_response(render_template(
+    #    'error.html'), msg=401, txt='not authorized')
+    # return response
+    return render_template('error.html', msg=401, txt='not authorized')
+    # return Response("Authentication failed!", 401, {'WWW-Authenticate': 'Basic realm="Login Required"'})
+
+
 @app.route("/callback")
 def callback():
     # wso2 = OAuth2Session(app.config.get('WSO2_ID'),
@@ -52,7 +71,7 @@ def callback():
         'code': request.args.get('code'),
         'client_id': app.config.get('WSO2_ID'),
         'client_secret': app.config.get('WSO2_SECRET'),
-        'redirect_uri': 'http://py.com:5005/callback'
+        'redirect_uri': 'http://py.com:5055/callback'
     }
     url = token_url
     r = requests.post(url, data=params)
@@ -73,6 +92,8 @@ def callback():
         resp.set_cookie('accs_tkn', data.get('access_token'),
                         max_age=data.get('expires_in'))
         resp.set_cookie('rfsh_tkn', '3')
+
+        temp = "access token"
 
     # return resp
     return redirect(url_for('profile'))

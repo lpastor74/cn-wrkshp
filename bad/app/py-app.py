@@ -1,24 +1,34 @@
+import os
+
+import flask
 from flask import Flask, render_template, request, redirect, url_for, flash, make_response, session, g
 import requests
 import json
-import os
 from urllib.parse import urlencode
 
 import requests
-'''from oauthlib.oauth2 import BackendApplicationClient
+'''
+from oauthlib.oauth2 import BackendApplicationClient
 from oauthlib.oauth2.rfc6749.errors import (AccessDeniedError,
                                             InvalidClientError,
-                                            MissingTokenError)'''
+                                            MissingTokenError)
+                                            '''
 from requests_oauthlib import OAuth2Session
 
-app = Flask(__name__)
 
-app.config['WSO2_ID'] = "QX0dUqgc6x2oe250HQarN_ZOTMYa"
-app.config['WSO2_SECRET'] = "_C170FqTrepSCaDjIBgqOxRa0bMa"
+import requests
+# from bottle import route, redirect, request, response, template, run
+
+
+app = flask.Flask(__name__)
+
+
+app.config['WSO2_ID'] = "bclDqHvn_8og8sRqdMdX2YxWNDAa"
+app.config['WSO2_SECRET'] = "p6nPZKXqEVOhR_NP_EALEwKxPZEa"
 app.debug = True
 app.secret_key = 'development'
 authorization_base_url = 'https://localhost:9445/oauth2/authorize'
-token_url = 'http://is-as-km:9765/oauth2/token'
+token_url = 'http://localhost:9765/oauth2/token'
 redirect_uri = 'http://py.com:5055/callback'
 scope = ['openid']
 
@@ -77,15 +87,16 @@ def callback():
         session['id_tkn'] = data.get('id_token')
         session['user'] = 'true'
 
-    # return redirect(url_for("http://py.com:5055/profile"))
-    # resp = make_response(render_template('index.html',
-    #                                     athr=session['accs_tkn'], bdy=session['rfsh_tkn']))
-    # resp.set_cookie('accs_tkn', data.get('access_token'),
-    #                max_age=data.get('expires_in'))
-    # resp.set_cookie('rfsh_tkn', '3')
+        resp = make_response(render_template('index.html',
+                                             athr=session['accs_tkn'], bdy=session['rfsh_tkn']))
+        resp.set_cookie('accs_tkn', data.get('access_token'),
+                        max_age=data.get('expires_in'))
+        resp.set_cookie('rfsh_tkn', '3')
+
+        temp = "access token"
 
     # return resp
-    return render_template('profile.html')
+    return redirect(url_for('profile'))
 
 
 @app.before_request
