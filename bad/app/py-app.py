@@ -22,13 +22,13 @@ import requests
 
 app = flask.Flask(__name__)
 
-
-app.config['WSO2_ID'] = "bclDqHvn_8og8sRqdMdX2YxWNDAa"
-app.config['WSO2_SECRET'] = "p6nPZKXqEVOhR_NP_EALEwKxPZEa"
+# py-application
+app.config['WSO2_ID'] = "vR6hVPGPTDPMlsC0dsvfLAfmmZMa"
+app.config['WSO2_SECRET'] = "mjyVSgp9Z1deueOV9953IZNMT0sa"
 app.debug = True
 app.secret_key = 'development'
 authorization_base_url = 'https://localhost:9445/oauth2/authorize'
-token_url = 'http://localhost:9765/oauth2/token'
+token_url = 'http://is-as-km:9765/oauth2/token'
 redirect_uri = 'http://py.com:5055/callback'
 scope = ['openid']
 
@@ -95,8 +95,10 @@ def callback():
 
         temp = "access token"
 
+        body = data.get('access_token')
+
     # return resp
-    return redirect(url_for('profile'))
+    return render_template('profile.html', athr='access_token', bdy=body)
 
 
 @app.before_request
@@ -123,17 +125,41 @@ def profile():
 
 @app.route('/')
 def hello_whale():
-    res = requests.get('https://favqs.com/api/qotd')
+    '''res = requests.get('http://py-api:5000/api/v1/resources/all')
+    y = json.loads(res.text)
+    data = y['data']
+    user = y['user']'''
+
+    '''res = requests.get('https://favqs.com/api/qotd')
     y = json.loads(res.text)
     author = y['quote']['author']
-    body = y['quote']['body']
+    body = y['quote']['body']'''
+
+    author = "hello"
+    body = " world"
 
     return render_template('index.html', athr=author, bdy=body)
 
 
 @app.route('/apicall/<id>', methods=['GET'])
 def api_call(id):
-    res = requests.get('http://py-api:5000/api/v1/resources/user/%d' % int(id))
+    ''' micro gateway call '''
+    '''auth_token = 'eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiIsIng1dCI6Ik5UQXhabU14TkRNeVpEZzNNVFUxWkdNME16RXpPREpoWldJNE5ETmxaRFUxT0dGa05qRmlNUSJ9.eyJhdWQiOiJodHRwOlwvXC9vcmcud3NvMi5hcGltZ3RcL2dhdGV3YXkiLCJzdWIiOiJhZG1pbiIsImFwcGxpY2F0aW9uIjp7ImlkIjo1LCJuYW1lIjoiand0X2d3IiwidGllciI6IjEwUGVyTWluIiwib3duZXIiOiJhZG1pbiJ9LCJzY29wZSI6ImFtX2FwcGxpY2F0aW9uX3Njb3BlIGRlZmF1bHQiLCJpc3MiOiJodHRwczpcL1wvbG9jYWxob3N0Ojk0NDVcL29hdXRoMlwvdG9rZW4iLCJrZXl0eXBlIjoiUFJPRFVDVElPTiIsInN1YnNjcmliZWRBUElzIjpbeyJuYW1lIjoiZ2V0X3VzZXIiLCJjb250ZXh0IjoiXC9yZXNvdXJjZXNcLzAuMC4xIiwidmVyc2lvbiI6IjAuMC4xIiwicHVibGlzaGVyIjoiYWRtaW4iLCJzdWJzY3JpcHRpb25UaWVyIjoiQnJvbnplIiwic3Vic2NyaWJlclRlbmFudERvbWFpbiI6ImNhcmJvbi5zdXBlciJ9LHsibmFtZSI6IlRvRG8iLCJjb250ZXh0IjoiXC9kZW1vXC8xLjAiLCJ2ZXJzaW9uIjoiMS4wIiwicHVibGlzaGVyIjoiYWRtaW4iLCJzdWJzY3JpcHRpb25UaWVyIjoiVW5saW1pdGVkIiwic3Vic2NyaWJlclRlbmFudERvbWFpbiI6ImNhcmJvbi5zdXBlciJ9XSwiY29uc3VtZXJLZXkiOiJqVUhRTGtnN2ZHeV9xTGFaQWV2Rlc4ck13cG9hIiwiZXhwIjozNzE4MTU5NTk1LCJpYXQiOjE1NzA2NzU5NDg1MzYsImp0aSI6ImVlM2VlY2JmLTgzOTMtNDgzNS05MDg0LTE1YjQyMjgyNzBhYiJ9.PZAQxqorxwnJEYsiykVsqYQYFx-1UNmADI08_heWKb-UB79adQNzNkifNO9wqH-4elrBAwyGMbbDNnu9Tk3vICdlWw92r2gUztzr9HvTMERvdwgEa6LZ4ZmeyDNUJKJ1GF2IGUKj5nFyDL9R_35CJBL9dCWYZ2qncqQE0QchbCtT9tV-S2yCs3nHjLzVbcC5Ka0D3VvcHu68tsMKij2elPQWk8Sk_zvbR6PPDuYbZdj3uxsepNZ2twvIOHeEQvLOhtWagX5t2J_k5Voroo2fT3OodZuaScJbKHeuVPEjykPKiYJpPTf8iDHEM6qbsnTkk09t8dDJud23Ky-_TiAzaw=='
+    hed = {'Authorization': 'Bearer ' + auth_token}
+    data = {'app': 'demo'}
+
+    url = 'http://gw-user:9090/resources/0.0.1/user/%d' % int(id)
+    res = requests.get(url, headers=hed)'''
+
+    ''' OAuth call '''
+    auth_token = session['accs_tkn']
+    hed = {'Authorization': 'Bearer ' + auth_token}
+    data = {'app': 'demo'}
+
+    url = 'http://py-api:5000/api/v1/resources/user/%d' % int(id)
+    res = requests.get(url, headers=hed)
+
+    #res = requests.get('http://py-api:5000/api/v1/resources/user/%d' % int(id))
     y = json.loads(res.text)
     data = y['data']
     user = y['user']

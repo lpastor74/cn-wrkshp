@@ -36,7 +36,7 @@ services:
     volumes:
       - ./api:/app/
   py-app:
-    image: lpastor/cn2app-adv:latest
+    image: lpastor/flask:v1
     ports:
       - "5055:5115"
       - "8281:8280"
@@ -46,7 +46,7 @@ services:
     links:
       - py-api
     healthcheck:
-      test: ["CMD", "nc", "-z", "localhost", "5055"]
+      test: ["CMD", "nc", "-z", "localhost", "5115"]
       interval: 10s
       timeout: 120s
       start_period: 40s

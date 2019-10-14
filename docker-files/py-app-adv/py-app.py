@@ -23,12 +23,12 @@ import requests
 app = flask.Flask(__name__)
 
 
-app.config['WSO2_ID'] = "bclDqHvn_8og8sRqdMdX2YxWNDAa"
-app.config['WSO2_SECRET'] = "p6nPZKXqEVOhR_NP_EALEwKxPZEa"
+app.config['WSO2_ID'] = "vR6hVPGPTDPMlsC0dsvfLAfmmZMa"
+app.config['WSO2_SECRET'] = "mjyVSgp9Z1deueOV9953IZNMT0sa"
 app.debug = True
 app.secret_key = 'development'
 authorization_base_url = 'https://localhost:9445/oauth2/authorize'
-token_url = 'http://localhost:9765/oauth2/token'
+token_url = 'http://is-as-km:9765/oauth2/token'
 redirect_uri = 'http://py.com:5055/callback'
 scope = ['openid']
 
