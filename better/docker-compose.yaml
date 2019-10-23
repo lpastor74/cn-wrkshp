@@ -21,7 +21,7 @@ services:
     ports:
       - "9990:9090"
     healthcheck:
-      test: ["CMD", "nc", "-z", "localhost", "9990"]
+      test: ["CMD", "nc", "-z", "localhost", "9090"]
       interval: 10s
       timeout: 120s
       start_period: 40s

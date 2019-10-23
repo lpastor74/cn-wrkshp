@@ -23,8 +23,8 @@ import requests
 app = flask.Flask(__name__)
 
 # py-application
-app.config['WSO2_ID'] = "vR6hVPGPTDPMlsC0dsvfLAfmmZMa"
-app.config['WSO2_SECRET'] = "mjyVSgp9Z1deueOV9953IZNMT0sa"
+app.config['WSO2_ID'] = "bv0TE6do5CeHsW8qCc45eb90Peoa"
+app.config['WSO2_SECRET'] = "LZH_hXtbY45GIfr8WnzYpQfsqa4a"
 app.debug = True
 app.secret_key = 'development'
 authorization_base_url = 'https://localhost:9445/oauth2/authorize'
@@ -156,6 +156,7 @@ def api_call(id):
     hed = {'Authorization': 'Bearer ' + auth_token}
     data = {'app': 'demo'}
 
+    #url = 'https://api-manager:8243/bar/1.0/user/%d' % int(id)
     url = 'http://py-api:5000/api/v1/resources/user/%d' % int(id)
     res = requests.get(url, headers=hed)
 
