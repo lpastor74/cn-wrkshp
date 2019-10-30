@@ -1,0 +1,34 @@
+version: "2.3"
+services:
+  gw-user:
+    image: wso2/wso2micro-gw:3.0.1
+    ports:
+      - "9085:9095"
+      - "9080:9090"
+    environment:
+      project: user
+    healthcheck:
+      test: ["CMD", "nc", "-z", "localhost", "9095"]
+      interval: 10s
+      timeout: 120s
+      start_period: 40s
+      retries: 10
+    volumes:
+      - ./gw-user/balx:/home/exec/
+      - ./gw-user/conf:/home/ballerina/conf/
+  gw-petstore:
+    image: wso2/wso2micro-gw:3.0.1
+    ports:
+      - "9065:9095"
+      - "9060:9090"
+    environment:
+      project: petstore
+    healthcheck:
+      test: ["CMD", "nc", "-z", "localhost", "9095"]
+      interval: 10s
+      timeout: 120s
+      start_period: 40s
+      retries: 10
+    volumes:
+      - ./gw-petstore/balx:/home/exec/
+      - ./gw-petstore/conf:/home/ballerina/conf/
